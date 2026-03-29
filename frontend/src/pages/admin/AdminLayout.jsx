@@ -45,9 +45,12 @@ export default function AdminLayout() {
         className="ds-admin-sidebar"
         style={{ width: "260px", flexShrink: 0 }}
       >
-        <div className="px-3 pb-3 mb-2" style={{borderBottom:'1px solid rgba(255,255,255,0.1)'}}>
-          <h5 className="mb-0 text-white fw-bold">💎 Admin Panel</h5>
-          <small style={{color:'rgba(255,255,255,0.5)'}}>{user?.name}</small>
+        <div
+          className="px-3 pb-3 mb-2"
+          style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
+        >
+          <h5 className="mb-0 text-white fw-bold">Admin Panel</h5>
+          <small style={{ color: "rgba(255,255,255,0.5)" }}>{user?.name}</small>
         </div>
         <div className="sidebar-label">Menu chính</div>
         <nav className="nav flex-column">
@@ -64,20 +67,38 @@ export default function AdminLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="px-3 mt-4" style={{borderTop:'1px solid rgba(255,255,255,0.1)', paddingTop:'1rem'}}>
-          <a href="/" className="btn btn-outline-light btn-sm w-100 mb-2" style={{borderColor:'rgba(255,255,255,0.2)', fontSize:'0.85rem'}}>
+        <div
+          className="px-3 mt-4"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+            paddingTop: "1rem",
+          }}
+        >
+          <a
+            href="/"
+            className="btn btn-outline-light btn-sm w-100 mb-2"
+            style={{
+              borderColor: "rgba(255,255,255,0.2)",
+              fontSize: "0.85rem",
+            }}
+          >
             ← Về trang chủ
           </a>
           <button
             className="btn btn-sm w-100"
             onClick={handleLogout}
-            style={{background:'rgba(239,68,68,0.15)', color:'#fca5a5', border:'1px solid rgba(239,68,68,0.3)', fontSize:'0.85rem'}}
+            style={{
+              background: "rgba(239,68,68,0.15)",
+              color: "#fca5a5",
+              border: "1px solid rgba(239,68,68,0.3)",
+              fontSize: "0.85rem",
+            }}
           >
             Đăng xuất
           </button>
         </div>
       </div>
-      <div className="flex-grow-1" style={{background:'var(--gray-50)'}}>
+      <div className="flex-grow-1" style={{ background: "var(--gray-50)" }}>
         <div className="p-4">
           <Outlet />
         </div>

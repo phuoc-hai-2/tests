@@ -119,12 +119,16 @@ exports.createProduct = async (req, res) => {
           .filter(Boolean);
       }
     }
+    const parsedVariants = JSON.parse(variants || "[]");
+    if (parsedVariants.some((v) => Number(v.price) < 0)) {
+      return res.status(400).json({ message: "Giá sản phẩm phải >= 0" });
+    }
     const product = await Product.create({
       name,
       slug: autoSlug,
       description,
       category,
-      variants: JSON.parse(variants || "[]"),
+      variants: parsedVariants,
       tags: parsedTags,
       metaTitle: metaTitle || "",
       metaDescription: metaDescription || "",
@@ -157,7 +161,13 @@ exports.updateProduct = async (req, res) => {
     if (slug) product.slug = slug;
     if (description !== undefined) product.description = description;
     if (category) product.category = category;
-    if (variants) product.variants = JSON.parse(variants);
+    if (variants) {
+      const parsedVariants = JSON.parse(variants);
+      if (parsedVariants.some((v) => Number(v.price) < 0)) {
+        return res.status(400).json({ message: "Giá sản phẩm phải >= 0" });
+      }
+      product.variants = parsedVariants;
+    }
     if (tags) {
       try {
         product.tags = JSON.parse(tags);

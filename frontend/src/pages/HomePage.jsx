@@ -32,14 +32,14 @@ export default function HomePage() {
             className="badge bg-white text-primary fw-bold mb-3 px-3 py-2"
             style={{ fontSize: "0.85rem" }}
           >
-            🔥 Nền tảng #1 Việt Nam
+            Nền tảng #1 Việt Nam
           </span>
           <h1>Digital Store</h1>
           <p className="mb-4">
             Mua sắm sản phẩm số, tài khoản &amp; phần mềm online uy tín
           </p>
           <Link to="/products" className="btn btn-light btn-lg px-5 py-3">
-            Khám phá ngay →
+            Khám phá ngay
           </Link>
         </div>
       </div>

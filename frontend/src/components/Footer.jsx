@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="row align-items-center">
           <div className="col-md-4 text-center text-md-start mb-3 mb-md-0">
             <h6 className="mb-1" style={{ fontSize: "1.2rem" }}>
-              💎 Digital Store
+              Digital Store
             </h6>
             <small>Nền tảng mua sắm số #1 Việt Nam</small>
           </div>
