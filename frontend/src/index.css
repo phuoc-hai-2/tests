@@ -276,6 +276,44 @@ a:hover { color:var(--primary-dark) }
 .ds-stat-card h6 { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--gray-500); font-weight:600 }
 .ds-stat-card .stat-value { font-size:1.8rem; font-weight:800; color:var(--gray-900) }
 
+.ds-chart-card {
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+}
+.ds-chart-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.ds-chart-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 0.25rem;
+}
+.ds-chart-subtitle {
+  color: var(--gray-500);
+  font-size: 0.88rem;
+  max-width: 420px;
+}
+.ds-chart-filter {
+  min-width: 120px;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+  background: linear-gradient(180deg, #ffffff 0%, var(--gray-50) 100%);
+}
+.ds-chart-area {
+  min-height: 340px;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at top right, rgba(79,70,229,0.06), transparent 28%),
+    linear-gradient(180deg, rgba(248,250,252,0.7) 0%, rgba(255,255,255,1) 100%);
+  padding: 0.5rem 0;
+}
+
 /* SCROLLBAR */
 ::-webkit-scrollbar { width:8px }
 ::-webkit-scrollbar-track { background:var(--gray-100) }
@@ -367,4 +405,11 @@ code {
   .ds-admin-sidebar { min-height:auto }
   .ds-result-card { padding: 2rem; margin: 0 1rem }
   .ds-chat-bubble { max-width: 85% }
+  .ds-chart-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ds-chart-filter {
+    width: 100%;
+  }
 }

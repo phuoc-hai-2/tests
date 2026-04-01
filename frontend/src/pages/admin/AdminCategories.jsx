@@ -4,7 +4,8 @@ import { getCategories, createCategory, updateCategory, deleteCategory } from '.
 export default function AdminCategories() {
   const [categories, setCategories] = useState([]);
   const [form, setForm] = useState({ name: '', slug: '', description: '' });
-  const [editId, setEditId] = useState(null);
+  const [
+    editId, setEditId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 

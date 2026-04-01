@@ -8,7 +8,9 @@ export const getUserGrowth = (months = 6) =>
 export const getTopProducts = () => API.get("/admin/dashboard/top-products");
 
 export const getAdminUsers = (params) => API.get("/admin/users", { params });
+export const createAdminUser = (data) => API.post("/admin/users", data);
 export const getAdminUserDetail = (id) => API.get(`/admin/users/${id}`);
+export const updateAdminUser = (id, data) => API.put(`/admin/users/${id}`, data);
 export const toggleBanUser = (id) => API.put(`/admin/users/${id}/ban`);
 
 export const getAllOrders = (params) => API.get("/orders/all", { params });
