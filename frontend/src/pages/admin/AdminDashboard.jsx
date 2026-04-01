@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -10,22 +10,26 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from 'recharts';
+} from "recharts";
 import {
   getRevenueChart,
   getStats,
   getTopProducts,
   getUserGrowth,
-} from '../../api/adminApi';
+} from "../../api/adminApi";
 
 const MONTH_OPTIONS = [3, 6, 9, 12];
 
-const currencyLabel = (value) => `${Number(value || 0).toLocaleString('vi-VN')} VND`;
+const currencyLabel = (value) =>
+  `${Number(value || 0).toLocaleString("vi-VN")} VND`;
 const formatCompactNumber = (value) => {
   const number = Number(value || 0);
-  if (number >= 1000000000) return `${(number / 1000000000).toFixed(number % 1000000000 === 0 ? 0 : 1)}ty`;
-  if (number >= 1000000) return `${(number / 1000000).toFixed(number % 1000000 === 0 ? 0 : 1)}tr`;
-  if (number >= 1000) return `${(number / 1000).toFixed(number % 1000 === 0 ? 0 : 1)}k`;
+  if (number >= 1000000000)
+    return `${(number / 1000000000).toFixed(number % 1000000000 === 0 ? 0 : 1)}ty`;
+  if (number >= 1000000)
+    return `${(number / 1000000).toFixed(number % 1000000 === 0 ? 0 : 1)}tr`;
+  if (number >= 1000)
+    return `${(number / 1000).toFixed(number % 1000 === 0 ? 0 : 1)}k`;
   return `${number}`;
 };
 const getAxisMax = (data, key) => {
@@ -86,7 +90,10 @@ function ChartCard({
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
-  const [topProducts, setTopProducts] = useState({ topSelling: [], topViewed: [] });
+  const [topProducts, setTopProducts] = useState({
+    topSelling: [],
+    topViewed: [],
+  });
   const [revenueData, setRevenueData] = useState([]);
   const [userGrowthData, setUserGrowthData] = useState([]);
   const [revenueMonths, setRevenueMonths] = useState(6);
@@ -94,9 +101,9 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [revenueLoading, setRevenueLoading] = useState(true);
   const [userGrowthLoading, setUserGrowthLoading] = useState(true);
-  const revenueAxisMax = getAxisMax(revenueData, 'revenue');
-  const ordersAxisMax = getAxisMax(revenueData, 'orders');
-  const usersAxisMax = getAxisMax(userGrowthData, 'users');
+  const revenueAxisMax = getAxisMax(revenueData, "revenue");
+  const ordersAxisMax = getAxisMax(revenueData, "orders");
+  const usersAxisMax = getAxisMax(userGrowthData, "users");
 
   useEffect(() => {
     const loadOverview = async () => {
@@ -163,7 +170,8 @@ export default function AdminDashboard() {
         <div>
           <h3 className="ds-section-title mb-2">Dashboard</h3>
           <p className="text-muted mb-0">
-            Theo doi doanh thu, don hang va tang truong nguoi dung theo tung giai doan.
+            Theo dõi doanh thu, dơn hàng và tăng trưởng người dùng theo từng
+            giai đoạn.
           </p>
         </div>
       </div>
@@ -171,28 +179,31 @@ export default function AdminDashboard() {
       <div className="row g-3 mb-4">
         <div className="col-md-3">
           <div className="ds-stat-card revenue">
-            <h6>Tong doanh thu</h6>
-            <div className="stat-value">{(stats?.totalRevenue || 0).toLocaleString('vi-VN')} VND</div>
+            <h6>Tổng doanh thu</h6>
+            <div className="stat-value">
+              {(stats?.totalRevenue || 0).toLocaleString("vi-VN")} VND
+            </div>
           </div>
         </div>
         <div className="col-md-3">
           <div className="ds-stat-card users">
-            <h6>Nguoi dung</h6>
+            <h6>Người dùng</h6>
             <div className="stat-value">{stats?.totalUsers || 0}</div>
           </div>
         </div>
         <div className="col-md-3">
           <div className="ds-stat-card orders">
-            <h6>Tong don hang</h6>
+            <h6>Tổng đơn hàng</h6>
             <div className="stat-value">{stats?.totalOrders || 0}</div>
           </div>
         </div>
         <div className="col-md-3">
           <div className="ds-stat-card pending">
-            <h6>Cho xu ly</h6>
+            <h6>Cho xử lý</h6>
             <div className="stat-value">{stats?.pendingOrders || 0}</div>
             <small className="text-muted">
-              Da TT: {stats?.paidOrders || 0} | HT: {stats?.completedOrders || 0}
+              Đã TT: {stats?.paidOrders || 0} | HT:{" "}
+              {stats?.completedOrders || 0}
             </small>
           </div>
         </div>
@@ -201,8 +212,7 @@ export default function AdminDashboard() {
       <div className="row g-3 mb-4">
         <div className="col-lg-7">
           <ChartCard
-            title="Doanh thu theo thang"
-            subtitle="Moi thang hien thi 2 cot tach rieng cho doanh thu va so don hang de de so sanh."
+            title="Doanh thu theo tháng"
             months={revenueMonths}
             onMonthsChange={setRevenueMonths}
             loading={revenueLoading}
@@ -214,29 +224,35 @@ export default function AdminDashboard() {
                 barCategoryGap="22%"
                 barGap={8}
               >
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(100,116,139,0.18)" />
-                <XAxis dataKey="month" tick={{ fill: '#64748b', fontSize: 12 }} />
+                <CartesianGrid
+                  strokeDasharray="4 4"
+                  stroke="rgba(100,116,139,0.18)"
+                />
+                <XAxis
+                  dataKey="month"
+                  tick={{ fill: "#64748b", fontSize: 12 }}
+                />
                 <YAxis
                   yAxisId="left"
                   domain={[0, revenueAxisMax]}
-                  tick={{ fill: '#64748b', fontSize: 12 }}
+                  tick={{ fill: "#64748b", fontSize: 12 }}
                   tickFormatter={formatCompactNumber}
                 />
                 <YAxis
                   yAxisId="right"
                   orientation="right"
                   domain={[0, ordersAxisMax]}
-                  tick={{ fill: '#64748b', fontSize: 12 }}
+                  tick={{ fill: "#64748b", fontSize: 12 }}
                   allowDecimals={false}
                 />
                 <Tooltip
                   contentStyle={{
                     borderRadius: 14,
-                    border: '1px solid #e2e8f0',
-                    boxShadow: '0 10px 25px rgba(15,23,42,0.12)',
+                    border: "1px solid #e2e8f0",
+                    boxShadow: "0 10px 25px rgba(15,23,42,0.12)",
                   }}
                   formatter={(value, name) => [
-                    name === 'Doanh thu' ? currencyLabel(value) : value,
+                    name === "Doanh thu" ? currencyLabel(value) : value,
                     name,
                   ]}
                 />
@@ -264,28 +280,36 @@ export default function AdminDashboard() {
 
         <div className="col-lg-5">
           <ChartCard
-            title="Tang truong user"
-            subtitle="So luong user moi duoc tao theo tung thang."
+            title="Tăng trưởng user"
             months={userGrowthMonths}
             onMonthsChange={setUserGrowthMonths}
             loading={userGrowthLoading}
           >
             <ResponsiveContainer width="100%" height={340}>
-              <LineChart data={userGrowthData} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="4 4" stroke="rgba(100,116,139,0.18)" />
-                <XAxis dataKey="month" tick={{ fill: '#64748b', fontSize: 12 }} />
+              <LineChart
+                data={userGrowthData}
+                margin={{ top: 12, right: 8, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="4 4"
+                  stroke="rgba(100,116,139,0.18)"
+                />
+                <XAxis
+                  dataKey="month"
+                  tick={{ fill: "#64748b", fontSize: 12 }}
+                />
                 <YAxis
                   allowDecimals={false}
                   domain={[0, usersAxisMax]}
-                  tick={{ fill: '#64748b', fontSize: 12 }}
+                  tick={{ fill: "#64748b", fontSize: 12 }}
                 />
                 <Tooltip
                   contentStyle={{
                     borderRadius: 14,
-                    border: '1px solid #e2e8f0',
-                    boxShadow: '0 10px 25px rgba(15,23,42,0.12)',
+                    border: "1px solid #e2e8f0",
+                    boxShadow: "0 10px 25px rgba(15,23,42,0.12)",
                   }}
-                  formatter={(value) => [`${value} user`, 'User moi']}
+                  formatter={(value) => [`${value} user`, "User moi"]}
                 />
                 <Legend />
                 <Line
@@ -294,7 +318,7 @@ export default function AdminDashboard() {
                   name="User moi"
                   stroke="#4f46e5"
                   strokeWidth={3}
-                  dot={{ r: 4, fill: '#4f46e5' }}
+                  dot={{ r: 4, fill: "#4f46e5" }}
                   activeDot={{ r: 6 }}
                 />
               </LineChart>
@@ -307,13 +331,13 @@ export default function AdminDashboard() {
         <div className="col-md-6">
           <div className="card h-100">
             <div className="card-body">
-              <h6>Top san pham ban chay</h6>
+              <h6>Top sản phẩm bán chạy</h6>
               <table className="table table-sm">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>San pham</th>
-                    <th>Da ban</th>
+                    <th>ản phẩm</th>
+                    <th>Đã bán</th>
                     <th>Doanh thu</th>
                   </tr>
                 </thead>
@@ -342,13 +366,13 @@ export default function AdminDashboard() {
         <div className="col-md-6">
           <div className="card h-100">
             <div className="card-body">
-              <h6>Top san pham xem nhieu</h6>
+              <h6>Top sản phẩm xem nhiều</h6>
               <table className="table table-sm">
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>San pham</th>
-                    <th>Luot xem</th>
+                    <th>Sản phẩm</th>
+                    <th>Lượt xem</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -362,7 +386,7 @@ export default function AdminDashboard() {
                   {topProducts.topViewed.length === 0 && (
                     <tr>
                       <td colSpan={3} className="text-muted">
-                        Chua co du lieu
+                        Chưa có dữ liệu
                       </td>
                     </tr>
                   )}
