@@ -74,7 +74,7 @@ export default function AdminLayout() {
             paddingTop: "1rem",
           }}
         >
-          <a
+          {/* <a
             href="/"
             className="btn btn-outline-light btn-sm w-100 mb-2"
             style={{
@@ -83,7 +83,7 @@ export default function AdminLayout() {
             }}
           >
             ← Về trang chủ
-          </a>
+          </a> */}
           <button
             className="btn btn-sm w-100"
             onClick={handleLogout}

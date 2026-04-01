@@ -52,10 +52,10 @@ export default function Navbar() {
                     role="button"
                     data-bs-toggle="dropdown"
                   >
-                    {user.name}
+                    {/* {user.name} */}
                   </a>
                   <ul className="dropdown-menu dropdown-menu-end">
-                    {user.role === "admin" && (
+                    {/* {user.role === "admin" && (
                       <>
                         <li>
                           <Link
@@ -69,7 +69,7 @@ export default function Navbar() {
                           <hr className="dropdown-divider" />
                         </li>
                       </>
-                    )}
+                    )} */}
                     <li>
                       <Link className="dropdown-item" to="/profile">
                         Hồ sơ

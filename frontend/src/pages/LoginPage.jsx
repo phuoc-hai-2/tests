@@ -18,7 +18,7 @@ export default function LoginPage() {
     try {
       const { data } = await login({ email, password });
       setUser(data);
-      navigate('/');
+      navigate(data.role === 'admin' ? '/admin' : '/');
     } catch (err) {
       setError(err.response?.data?.message || 'Đăng nhập thất bại');
     } finally {
